@@ -11,4 +11,10 @@ Disclaimer
 =========
 While I'm learning (both Emacs and Clojure) I will improve my .emacs.d setup.
 
+Useful Keys
+===========
+ - `C-h` (`m` - describe modes, `f` - describe function, `v` - describe
+variable, `k` - describe key, `a` - search by phrase, `C-a` - show home page)
+
+
 
