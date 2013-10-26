@@ -12,6 +12,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (nzeburn))) ;; alternative to (load-theme 'nzenburn t) in initialize-emacs()
  '(custom-safe-themes (quote ("8bb1e9a22e9e9d405ca9bdf20b91301eba12c0b9778413ba7600e48d2d3ad1fb" default)))
 ;; configure theme here
  '(menu-bar-mode nil) ;; disable menu bar
@@ -19,6 +20,7 @@
  '(scroll-bar-mode nil) ;; no scrolling
  '(inhibit-startup-message t) ;; no startup screen (still can be accessible by C-h C-a 
  ;; this is also an alias to inhibit-startup-screen
+ '(calendar-week-start-day 1) ;; start week from Monday
 ) 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -44,7 +46,15 @@
   (nyan-mode)
   ;; type y or n for prompt instead of yes or no
   (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; how to add custom shortcut for the action
+  (global-set-key (kbd "<f9>") 'calendar)
 )
+
+;; TODO:
+;; - activate projectile
+;; - configure clojure-mode-hook
+;; - activate auto-complete
+;; - configure ido or another suggestion manager
 
 ;; Can present:
 ;;  - working with packages
