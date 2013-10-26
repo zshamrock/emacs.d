@@ -1,2 +1,5 @@
 Describe what starter-kit changes
 Describe what preludes changes
+Enable spell checking
+How to navigate in lisp code (jump from one parens to another, navigate to different/next form/function, extract snippet into the defun aka basic refatoring)
+Refactoring support

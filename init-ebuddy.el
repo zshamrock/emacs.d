@@ -12,7 +12,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (nzeburn))) ;; alternative to (load-theme 'nzenburn t) in initialize-emacs()
+;; '(custom-enabled-themes (quote (zenburn))) ;; alternative to (load-theme 'nzenburn t) in initialize-emacs()
  '(custom-safe-themes (quote ("8bb1e9a22e9e9d405ca9bdf20b91301eba12c0b9778413ba7600e48d2d3ad1fb" default)))
 ;; configure theme here
  '(menu-bar-mode nil) ;; disable menu bar
@@ -32,7 +32,10 @@
 ;; another alternative is to use (package-initialize)
 (add-hook 'after-init-hook 'initialize-emacs)
 
-(defun initialize-emacs ()  
+(defun initialize-emacs ()
+  (install-missing-packages)
+  
+  ;;
   (require 'hlinum)
   (global-linum-mode)
   (hlinum-activate)
@@ -48,6 +51,26 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   ;; how to add custom shortcut for the action
   (global-set-key (kbd "<f9>") 'calendar)
+)
+
+(defun install-missing-packages ()
+  ;; install not installed packages from the list
+  ;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+  (setq packages '(hlinum 
+		   zenburn-theme 
+		   fullscreen-mode 
+		   nyan-mode 
+		   rainbow-delimiters
+		   smartparens))
+
+  ;; fetch the list of the packages available
+  (when (not package-archive-contents)
+    (package-refresh-contents))
+
+  ;; install missing packages
+  (dolist (package packages)
+    (when (not (package-installed-p package))
+               (package-install package)))
 )
 
 ;; TODO:
