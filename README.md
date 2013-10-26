@@ -3,7 +3,8 @@
 My .emacs.d config helping into my clojure journey :)
 
 ## Emacs Version
-At home I am using Emacs 24.3.1
+At home I am using Emacs 24.3.1 (`M-x version` "GNU Emacs 24.3.1 (i686-pc-linux-gnu, GTK+ Version 2.20.1)
+ of 2013-09-08 on debian")
 
 ## Disclaimer
 While I'm learning (both Emacs and Clojure) I will improve my .emacs.d setup.
