@@ -59,6 +59,11 @@
   ;; do we need to require package any time we want to use it? 
   ;; why for some packages it works fine, but another we need to "require"?
   (require 'auto-complete)
+
+  ;; show open/closed parens
+  (show-paren-mode)
+
+  (configure-hooks)
 )
 
 (defun install-missing-packages ()
@@ -72,7 +77,8 @@
 		   smartparens
 		   cider
 		   duplicate-thing
-		   auto-complete))
+		   auto-complete
+		   helm))
 
   ;; fetch the list of the packages available
   (when (not package-archive-contents)
@@ -81,16 +87,19 @@
   ;; install missing packages
   (dolist (package packages)
     (unless (package-installed-p package)
-               (package-install package)))
-)
+               (package-install package))
+    )
+)  
 
 ;; configure hooks
-;; emacs lisp hooks
-(setq elisp-hooks '(rainbow-delimiters-mode
-		    smartparens-strict-mode
-		    auto-complete-mode))
-(dolist (hook elisp-hooks)
-  (add-hook 'emacs-lisp-mode-hook hook)
+(defun configure-hooks ()
+    ;; emacs lisp hooks
+    (setq elisp-hooks '(rainbow-delimiters-mode
+			smartparens-strict-mode
+		        auto-complete-mode))
+    (dolist (hook elisp-hooks)
+      (add-hook 'emacs-lisp-mode-hook hook)
+    )
 )
 
 
