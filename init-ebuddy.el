@@ -69,7 +69,7 @@
 
   ;; install missing packages
   (dolist (package packages)
-    (when (not (package-installed-p package))
+    (unless (package-installed-p package)
                (package-install package)))
 )
 
