@@ -51,6 +51,14 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
   ;; how to add custom shortcut for the action
   (global-set-key (kbd "<f9>") 'calendar)
+
+  ;; configure duplicate thing
+  (require 'duplicate-thing)
+  (global-set-key (kbd "M-c") 'duplicate-thing)
+
+  ;; do we need to require package any time we want to use it? 
+  ;; why for some packages it works fine, but another we need to "require"?
+  (require 'auto-complete)
 )
 
 (defun install-missing-packages ()
@@ -61,7 +69,10 @@
 		   fullscreen-mode 
 		   nyan-mode 
 		   rainbow-delimiters
-		   smartparens))
+		   smartparens
+		   cider
+		   duplicate-thing
+		   auto-complete))
 
   ;; fetch the list of the packages available
   (when (not package-archive-contents)
@@ -73,11 +84,25 @@
                (package-install package)))
 )
 
+;; configure hooks
+;; emacs lisp hooks
+(setq elisp-hooks '(rainbow-delimiters-mode
+		    smartparens-strict-mode
+		    auto-complete-mode))
+(dolist (hook elisp-hooks)
+  (add-hook 'emacs-lisp-mode-hook hook)
+)
+
+
 ;; TODO:
+;; - configure hooks for cider mode
+;; - how to highlight open/close brackets 
+;; - auto indentation
 ;; - activate projectile
+;; - comment the whole block/form
 ;; - configure clojure-mode-hook
 ;; - activate auto-complete
-;; - configure ido or another suggestion manager
+;; - configure ido or another suggestion manager (like helm, for example)
 
 ;; Can present:
 ;;  - working with packages
