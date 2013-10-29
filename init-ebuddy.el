@@ -60,15 +60,18 @@
   ;; why for some packages it works fine, but another we need to "require"?
   (require 'auto-complete)
 
-  ;; show open/closed parens
+  ;; highlight open/closed parens
   (show-paren-mode)
+
+  ;; give helm a try (I have used ido for a while, interesting to compare with the helm)
+  (helm-mode)
 
   (configure-hooks)
 )
 
 (defun install-missing-packages ()
-  ;; install not installed packages from the list
-  ;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+  "Install not installed packages from the list.
+See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name"
   (setq packages '(hlinum 
 		   zenburn-theme 
 		   fullscreen-mode 
@@ -78,7 +81,8 @@
 		   cider
 		   duplicate-thing
 		   auto-complete
-		   helm))
+		   helm
+		   magit))
 
   ;; fetch the list of the packages available
   (when (not package-archive-contents)
@@ -93,6 +97,7 @@
 
 ;; configure hooks
 (defun configure-hooks ()
+  "Configure hooks for different Emacs major(?) modes"
     ;; emacs lisp hooks
     (setq elisp-hooks '(rainbow-delimiters-mode
 			smartparens-strict-mode
@@ -103,10 +108,12 @@
 )
 
 
+
 ;; TODO:
 ;; - configure hooks for cider mode
-;; - how to highlight open/close brackets 
-;; - auto indentation
+;; - auto indentation (C-j or RET can be rebound)
+;; - try ibuffer (what is it?)
+;; - learn about dired (navigation specific)
 ;; - activate projectile
 ;; - comment the whole block/form
 ;; - configure clojure-mode-hook
