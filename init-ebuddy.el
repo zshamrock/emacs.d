@@ -110,6 +110,8 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
 
 
 ;; TODO:
+;; - try cedet and ebc mode
+;; - configure sandbox-ed emacs to experiment with plugins without mess the current stable setup
 ;; - configure hooks for cider mode
 ;; - auto indentation (C-j or RET can be rebound)
 ;; - try ibuffer (what is it?)
