@@ -29,6 +29,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(package-initialize)
+
 ;; another alternative is to use (package-initialize)
 (add-hook 'after-init-hook 'initialize-emacs)
 
