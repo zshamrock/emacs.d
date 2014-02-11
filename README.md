@@ -13,6 +13,8 @@ While I'm learning (both Emacs and Clojure) I will improve my .emacs.d setup.
 ## Useful Keys
  - `C-h` (`m` - describe modes, `f` - describe function, `v` - describe
 variable, `k` - describe key, `a` - search by phrase, `w` - shows the key shortcut for the command (alternative for `M-x where-is`), `C-a` - show home page)
+Found a wonderful new help combination, just press `C-h` after any already pressed key, for example, C-x and it will display all available shortcuts which start with this combination 
+(see http://stackoverflow.com/questions/2064094/keyboard-shortcut-completion-help-in-emacs).
 
 ## Interaction with lisp
 `C-x C-e` evaluate last expr
