@@ -58,6 +58,7 @@
   (require 'duplicate-thing)
   (global-set-key (kbd "M-c") 'duplicate-thing)
   (global-set-key (kbd "C-z") 'undo)
+  (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
   ;; do we need to require package any time we want to use it? 
   ;; why for some packages it works fine, but another we need to "require"?
