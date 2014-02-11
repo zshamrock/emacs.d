@@ -57,6 +57,7 @@
   ;; configure duplicate thing
   (require 'duplicate-thing)
   (global-set-key (kbd "M-c") 'duplicate-thing)
+  (global-set-key (kbd "C-z") 'undo)
 
   ;; do we need to require package any time we want to use it? 
   ;; why for some packages it works fine, but another we need to "require"?
@@ -84,7 +85,8 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
 		   duplicate-thing
 		   auto-complete
 		   helm
-		   magit))
+		   magit
+		   projectile))
 
   ;; fetch the list of the packages available
   (when (not package-archive-contents)
@@ -104,8 +106,22 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
     (setq elisp-hooks '(rainbow-delimiters-mode
 			smartparens-strict-mode
 		        auto-complete-mode))
+
+    (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
+    (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
+    (setq cider-hooks '(cider-turn-on-eldoc-mode))
+
+    (setq hooks (make-hash-table))
+    (puthash 'emacs-lisp-mode-hook elisp-hooks hooks)
+    
     (dolist (hook elisp-hooks)
       (add-hook 'emacs-lisp-mode-hook hook)
+    )
+    (dolist (hook clojure-hooks)
+      (add-hook 'clojure-mode-hook hook)
+    )
+    (dolist (hook cider-hooks)
+      (add-hook 'cider-mode-hook hook)
     )
 )
 
