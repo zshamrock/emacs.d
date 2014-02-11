@@ -108,24 +108,20 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
 		        auto-complete-mode))
 
     (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
-    (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
+    
     (setq cider-hooks '(cider-turn-on-eldoc-mode))
 
-    (setq hooks (make-hash-table))
-    (puthash 'emacs-lisp-mode-hook elisp-hooks hooks)
-    
-    (dolist (hook elisp-hooks)
-      (add-hook 'emacs-lisp-mode-hook hook)
-    )
-    (dolist (hook clojure-hooks)
-      (add-hook 'clojure-mode-hook hook)
-    )
-    (dolist (hook cider-hooks)
-      (add-hook 'cider-mode-hook hook)
-    )
+    (apply-hooks 'emacs-lisp-mode-hook elisp-hooks)
+    (apply-hooks 'clojure-mode-hook clojure-hooks)
+    (apply-hooks 'cider-mode-hook cider-hooks)
 )
 
-
+(defun apply-hooks (mode hooks)
+  "Apply hooks for the mode"
+  (print (concat "Applying hooks for the " (substring (symbol-name mode) 0 -5) "..."))
+  (dolist (hook hooks)
+    (add-hook mode hook))
+)
 
 ;; TODO:
 ;; - try cedet and ebc mode
