@@ -59,6 +59,9 @@
   (global-set-key (kbd "M-c") 'duplicate-thing)
   (global-set-key (kbd "C-z") 'undo)
   (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+  (global-set-key (kbd "M-P") 'helm-recentf)
+
+  (define-key emacs-lisp-mode-map (kbd "M-<f12>") 'imenu)
 
   ;; do we need to require package any time we want to use it? 
   ;; why for some packages it works fine, but another we need to "require"?
@@ -71,6 +74,10 @@
   (helm-mode)
 
   (configure-hooks)
+
+  ;;(text-scale-adjust 4)
+
+  ;;(set-face-attribute 'default nil :height 200)
 )
 
 (defun install-missing-packages ()
@@ -106,7 +113,7 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
   "Configure hooks for different Emacs major(?) modes"
     ;; emacs lisp hooks
     (setq elisp-hooks '(rainbow-delimiters-mode
-			smartparens-strict-mode
+			smartparens-mode
 		        auto-complete-mode))
 
     (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
