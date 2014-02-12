@@ -87,7 +87,8 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
 		   auto-complete
 		   helm
 		   magit
-		   projectile))
+		   projectile
+		   zencoding-mode))
 
   ;; fetch the list of the packages available
   (when (not package-archive-contents)
@@ -111,10 +112,16 @@ See: http://stackoverflow.com/questions/10092322/how-to-automatically-install-em
     (setq clojure-hooks (append elisp-hooks '(projectile-mode)))
     
     (setq cider-hooks '(cider-turn-on-eldoc-mode))
+    (setq sgml-hooks '(zencoding-mode))
 
     (apply-hooks 'emacs-lisp-mode-hook elisp-hooks)
     (apply-hooks 'clojure-mode-hook clojure-hooks)
     (apply-hooks 'cider-mode-hook cider-hooks)
+    (apply-hooks 'sgml-mode-hook sgml-hooks)
+
+    ;; undefine the key C-j for zencoding-expand-line, use C-j for enter
+    (eval-after-load 'zencoding-mode
+      '(define-key zencoding-mode-keymap (kbd "C-j") nil))
 )
 
 (defun apply-hooks (mode hooks)
