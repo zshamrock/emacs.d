@@ -37,7 +37,6 @@
 (defun initialize-emacs ()
   (install-missing-packages)
   
-  ;;
   (require 'hlinum)
   (global-linum-mode)
   (hlinum-activate)
