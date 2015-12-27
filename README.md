@@ -1,3 +1,9 @@
+# Disclaimer
+
+I am no longer an Emacs user, but switched to Vim instead. For the latest changes around environment setup, please, check https://github.com/zshamrock/ididitagain.
+
+Thank you.
+
 # emacs.d
 
 My .emacs.d config helping into my clojure journey :)
